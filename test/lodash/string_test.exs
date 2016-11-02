@@ -122,11 +122,11 @@ defmodule Lodash.StringTest do
   end
 
   test "truncate empty string" do
-    assert "..." == Lodash.String.truncate("")
+    assert "" == Lodash.String.truncate("")
   end
 
   test "truncate hi-diddly-ho there, neighborino" do
-    assert "hi-diddly-ho there, neighborino..." == Lodash.String.truncate("hi-diddly-ho there, neighborino")
+    assert "hi-diddly-ho there, neighborino" == Lodash.String.truncate("hi-diddly-ho there, neighborino")
   end
 
   test "truncate hi-diddly-ho there, neighborino length" do
