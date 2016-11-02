@@ -37,6 +37,20 @@ defmodule Lodash.String do
       |> Enum.join("_")
   end
 
+  def lower_case(str) do
+    str
+      |> case_words
+      |> Enum.map(&(String.downcase(&1)))
+      |> Enum.join(" ")
+  end
+
+  def start_case(str) do
+    str
+      |> case_words
+      |> Enum.map(&(String.capitalize(&1)))
+      |> Enum.join(" ")
+  end
+
   def truncate(str, options) do
     length = Keyword.get(options, :length, 80)
     separator = Keyword.get(options, :separator, ~r//)
