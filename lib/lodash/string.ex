@@ -19,8 +19,13 @@ defmodule Lodash.String do
   end
 
   def camel_case(str) do
-    pascal = pascal_case(str)
-    (pascal |> String.first |> String.downcase) <> (pascal |> String.slice(1..-1))
+    str
+      |> case_words
+      |> Stream.with_index
+      |> Enum.map(fn {elem, i} ->
+        if i == 0, do: String.downcase(elem), else: String.capitalize(elem)
+      end)
+      |> Enum.join
   end
 
   def kebab_case(str) do
@@ -51,7 +56,7 @@ defmodule Lodash.String do
       |> Enum.join(" ")
   end
 
-  def truncate(str, options) do
+  def truncate(str, options \\ []) do
     length = Keyword.get(options, :length, 80)
     separator = Keyword.get(options, :separator, ~r//)
     omission = Keyword.get(options, :omission, "...")
