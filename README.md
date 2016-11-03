@@ -19,6 +19,9 @@ This package can be installed as:
       [applications: [:lodash]]
     end
     ```
+## Docs
+
+Read more at [hex](https://hexdocs.pm/lodash/api-reference.html)
 
 ## Examples
 
@@ -51,4 +54,27 @@ This package can be installed as:
 
   iex> Lodash.String.truncate("pokemon go", length: 5)
   "pok..."
+```
+
+## Collection
+
+```elixir
+  iex> Lodash.Collection.compact([1, 2, nil])
+  [1, 2]
+  iex> Lodash.Collection.difference([1, 2], [2, 3])
+  [1]
+  iex> Lodash.Collection.difference_by([1.1, 2.2], [1.2, 3.0], fn(x, y) -> Float.floor(x) == Float.floor(y) end)
+  [2.2]
+  iex> Lodash.Collection.intersection([1, 2], [2, 3])
+  [2]
+  iex> Lodash.Collection.intersection_by([1.1, 2.2], [1.2, 3.0], fn(x, y) -> Float.floor(x) == Float.floor(y) end)
+  [1.1]
+  iex> Lodash.Collection.pull([1, 2], 1)
+  [2]
+  iex> Lodash.Collection.pull_all([1, 2, 3], [2, 3])
+  [1]
+  iex> Lodash.Collection.union([1, 2], [2, 3])
+  [1, 2, 3]
+  iex> Lodash.Collection.union_by([1, 2, 3], [4, 5, 6], fn(x) -> x == 1 end)
+  [1, 2]
 ```
